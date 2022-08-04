@@ -108,7 +108,8 @@ app.post('/api/animals', (req, res) => {
       res.json(animal); 
     }
 });
-  
+
+// starts port
 app.listen(PORT, () => {
     console.log(`API server now on port ${PORT}!`);
 });
