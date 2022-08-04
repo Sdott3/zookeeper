@@ -7,6 +7,9 @@ const app = express();
 const fs = require('fs');
 const path = require('path');
 
+// route to express.js
+app.use(express.static('public'));
+
 // parse incoming string or array data
 app.use(express.urlencoded({ extended: true}));
 // parse incoming JSON data
@@ -107,6 +110,21 @@ app.post('/api/animals', (req, res) => {
       const animal = createNewAnimal(req.body, animals);
       res.json(animal); 
     }
+});
+
+// create routes to serve index.html
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, './public/index.html'));
+});
+
+// create route to take user to animals
+app.get('/animals', (req, res) => {
+  res.sendFile(path.join(__dirname, './public/animals.html'));
+});
+
+// create route to take user to zookeeper
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, './public/index.html'));
 });
 
 // starts port
