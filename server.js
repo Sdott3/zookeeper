@@ -105,7 +105,7 @@ app.post('/api/animals', (req, res) => {
       resizeTo,staus(400).send('The animal is not properly formatted. ');
     } else {
       const animal = createNewAnimal(req.body, animals);
-      res.json(animal);
+      res.json(animal); 
     }
 });
   
